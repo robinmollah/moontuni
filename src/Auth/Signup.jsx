@@ -1,6 +1,7 @@
 import React from 'react';
 import { Avatar, Box, Button, Heading, Stack } from '@chakra-ui/react';
 import LoginUsingEmailPassword from './Login/LoginUsingEmailPassword';
+import SignupForm from './SignupForm';
 
 const Signup = () => {
   return (
