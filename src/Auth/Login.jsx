@@ -16,7 +16,7 @@ const Login = () => {
           </Button>
         </Box>
       </Stack>
-      <Box>
+      <Box marginTop={'0.5em'}>
         New to us?{' '}
         <Link color="teal.500" href="/signup">
           Sign Up

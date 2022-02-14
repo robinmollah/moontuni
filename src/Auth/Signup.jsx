@@ -1,6 +1,5 @@
-import React from 'react';
-import { Avatar, Box, Button, Heading, Stack } from '@chakra-ui/react';
-import LoginUsingEmailPassword from './Login/LoginUsingEmailPassword';
+import React, { useState } from 'react';
+import { Avatar, Box, Button, Heading, Link, Stack } from '@chakra-ui/react';
 import SignupForm from './SignupForm';
 
 const Signup = () => {
@@ -10,9 +9,10 @@ const Signup = () => {
       <Heading color="teal.400">Welcome</Heading>
       <Box>
         <SignupForm />
-        <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width="full">
-          Sign up
-        </Button>
+
+        <Link marginTop={'1em'} float={'right'} href={'/'}>
+          Home
+        </Link>
       </Box>
     </Stack>
   );
