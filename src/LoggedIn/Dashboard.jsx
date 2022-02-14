@@ -1,9 +1,13 @@
 import React from 'react';
-import { Table, TableCaption, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
-import MessageList from './MessageList';
 import Conversation from './Conversation';
 import { io } from 'socket.io-client';
-export const socket = io('ws://127.0.0.1:3000');
+let BACKEND_URL;
+if (window.location.href.includes('localhost') || window.location.href.includes('127.0.0.1')) {
+  BACKEND_URL = '127.0.0.1:3000';
+} else {
+  BACKEND_URL = 'notifications.eagle3dstreaming.com:4002';
+}
+export const socket = io('ws://' + BACKEND_URL);
 
 const Dashboard = () => {
   const [messages, setMessages] = React.useState([

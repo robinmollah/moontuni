@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^16.0.0",
     "email-validator": "^2.0.4",
     "firebase": "^9.6.6",
     "framer-motion": "^6",
@@ -23,8 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "BACKEND_URL=127.0.0.1:3000 && react-scripts start",
+    "build": "BACKEND_URL=notifications.eagle3dstreaming.com:4002 && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
