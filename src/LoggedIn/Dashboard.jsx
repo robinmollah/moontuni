@@ -3,11 +3,11 @@ import Conversation from './Conversation';
 import { io } from 'socket.io-client';
 let BACKEND_URL;
 if (window.location.href.includes('localhost') || window.location.href.includes('127.0.0.1')) {
-  BACKEND_URL = '127.0.0.1:3000';
+  BACKEND_URL = 'ws://127.0.0.1:4002';
 } else {
-  BACKEND_URL = 'notifications.eagle3dstreaming.com:4002';
+  BACKEND_URL = 'wss://moontuni.properbd.net';
 }
-export const socket = io('ws://' + BACKEND_URL);
+export const socket = io(BACKEND_URL);
 
 const Dashboard = () => {
   const [messages, setMessages] = React.useState([
