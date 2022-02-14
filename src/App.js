@@ -15,12 +15,17 @@ function App() {
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
       console.log('User already logged in', user);
+      window.localStorage.setItem('uid', uid);
+      window.localStorage.setItem('email', user.email);
       if (!window.location.href.includes('dashboard')) {
         window.location.href = '/dashboard';
       }
     } else {
       // User is signed out
       // ...
+      if (window.location.href.includes('dashboard')) {
+        window.location.href = '/';
+      }
     }
   });
 
@@ -29,6 +34,7 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="signup" element={<Signup />} />
       <Route path="dashboard" element={<Dashboard />} />
+      <Route path="*" element={<div>Not Found</div>} />
     </Routes>
   );
 }
