@@ -10,7 +10,7 @@ const Login = () => {
         <Avatar bg="teal.500" />
         <Heading color="teal.400">Welcome</Heading>
         <Box>
-          <LoginUsingOtp />
+          <LoginUsingEmailPassword />
           <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width="full">
             Login
           </Button>
