@@ -11,10 +11,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="signup" element={<Signup />} />
-        </Routes>
+        <App />
       </BrowserRouter>
     </ChakraProvider>
   </React.StrictMode>,

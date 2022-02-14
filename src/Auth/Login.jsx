@@ -11,9 +11,6 @@ const Login = () => {
         <Heading color="teal.400">Welcome</Heading>
         <Box>
           <LoginUsingEmailPassword />
-          <Button borderRadius={0} type="submit" variant="solid" colorScheme="teal" width="full">
-            Login
-          </Button>
         </Box>
       </Stack>
       <Box marginTop={'0.5em'}>
