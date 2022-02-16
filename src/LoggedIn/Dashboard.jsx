@@ -13,6 +13,14 @@ const Dashboard = () => {
   const [messages, setMessages] = React.useState([
     { text: 'Hi', sender: 1, time: Date.now() },
     { text: 'Hello', sender: 'robinsajin@gmail.com', time: Date.now() },
+    { text: 'Hello', sender: 'robinsajin@gmail.com', time: Date.now() },
+    { text: 'Hello', sender: 'robinsajin@gmail.com', time: Date.now() },
+    { text: 'Hello', sender: 'robinsajin@gmail.com', time: Date.now() },
+    { text: 'Hello', sender: 'robinsajin@gmail.com', time: Date.now() },
+    { text: 'Hello', sender: 'robinsajin@gmail.com', time: Date.now() },
+    { text: 'Hello', sender: 'robinsajin@gmail.com', time: Date.now() },
+    { text: 'Hello', sender: 'robinsajin@gmail.com', time: Date.now() },
+    { text: 'Hello', sender: 'robinsajin@gmail.com', time: Date.now() },
   ]);
   const [attachedListener, setAttachedListener] = React.useState(false);
   if (!attachedListener) {
