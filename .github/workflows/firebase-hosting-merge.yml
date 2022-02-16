@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Write firebase configuration file
-        run: cd src && echo ${{ secrets.FIREBASE_CONFIG_FILE }} > firebase.config.json
+        run: cd src && echo '${{ secrets.FIREBASE_CONFIG_FILE }}' > firebase.config.json
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install # will run `yarn install` command
