@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, TableCaption, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
+import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
 
 const MessageList = () => {
   const response = [

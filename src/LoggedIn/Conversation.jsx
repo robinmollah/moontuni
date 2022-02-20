@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Button, Flex, Heading, Input, Stack, Table, Tbody, Td, Text, Tr } from '@chakra-ui/react';
-import { sendMessage, socket } from './Dashboard';
+import { sendMessage, socket } from './Dashboard.tsx';
+import useWindowSize from '../hoooks/useWindowSize';
 
 const Conversation = ({ messages, addMessage }) => {
   const email = window.localStorage['email'];
   const [message, setMessage] = React.useState('');
+  const windowSize = useWindowSize();
+  const [screenHeight, setScreenHeight] = React.useState(windowSize.height);
 
   const sendTextMessage = () => {
     // setMessages([...messages, { text: message, sender: email, time: Date.now() }]);
@@ -13,15 +16,20 @@ const Conversation = ({ messages, addMessage }) => {
     setMessage('');
     sendMessage(message);
   };
-
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   };
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, windowSize]);
+
+  function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      sendTextMessage();
+    }
+  }
 
   return (
     <>
@@ -43,7 +51,7 @@ const Conversation = ({ messages, addMessage }) => {
       </Table>
       <div ref={messagesEndRef} />
       <Flex backdropBlur={true} backgroundColor={'white'} position="fixed" bottom={'1em'} width={'100%'}>
-        <Input type={'text'} onChange={(e) => setMessage(e.target.value)} value={message} />
+        <Input type={'text'} onChange={(e) => setMessage(e.target.value)} value={message} onKeyDown={handleKeyDown} />
         <Button onClick={sendTextMessage}>Send</Button>
       </Flex>
     </>
@@ -51,8 +59,8 @@ const Conversation = ({ messages, addMessage }) => {
 };
 
 Conversation.propTypes = {
-  messages: PropTypes.array,
-  addMessage: PropTypes.func,
+  messages: PropTypes.array.isRequired,
+  addMessage: PropTypes.func.isRequired,
 };
 
 export default Conversation;
