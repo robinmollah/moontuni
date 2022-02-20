@@ -3,19 +3,17 @@ import {
   Button,
   chakra,
   FormControl,
-  FormHelperText,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
-  Link,
   Stack,
   Text,
   useToast,
 } from '@chakra-ui/react';
 import { FaLock, FaUserAlt } from 'react-icons/fa';
 import validator from 'validator';
-import { firebaseApp, firebaseAuth } from '../firebase-app';
+import { firebaseAuth } from '../firebase-app';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 
 const CFaUserAlt = chakra(FaUserAlt);

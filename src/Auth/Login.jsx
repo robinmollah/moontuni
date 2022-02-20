@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Flex, Heading, Button, Stack, Box, Link, Avatar } from '@chakra-ui/react';
+import React from 'react';
+import { Flex, Heading, Stack, Box, Link, Avatar } from '@chakra-ui/react';
 import LoginUsingEmailPassword from './Login/LoginUsingEmailPassword';
-import LoginUsingOtp from './Login/LoginUsingOtp';
 
 const Login = () => {
   return (
