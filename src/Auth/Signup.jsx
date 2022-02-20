@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Avatar, Box, Button, Heading, Link, Stack } from '@chakra-ui/react';
+import React from 'react';
+import { Avatar, Box, Heading, Link, Stack } from '@chakra-ui/react';
 import SignupForm from './SignupForm';
 
 const Signup = () => {
