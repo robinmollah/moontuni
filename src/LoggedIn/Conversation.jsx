@@ -1,14 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button, Flex, Heading, Input, Stack, Table, Tbody, Td, Text, Tr } from '@chakra-ui/react';
-import { sendMessage, socket } from './Dashboard.tsx';
+import { Button, Flex, Heading, Input, Table, Tbody, Td, Tr } from '@chakra-ui/react';
+import { sendMessage } from './Dashboard.tsx';
 import useWindowSize from '../hoooks/useWindowSize';
 
 const Conversation = ({ messages, addMessage }) => {
   const email = window.localStorage['email'];
   const [message, setMessage] = React.useState('');
   const windowSize = useWindowSize();
-  const [screenHeight, setScreenHeight] = React.useState(windowSize.height);
 
   const sendTextMessage = () => {
     // setMessages([...messages, { text: message, sender: email, time: Date.now() }]);

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Conversation from './Conversation';
 import { io } from 'socket.io-client';
-import MessageList from './MessageList';
 let BACKEND_URL;
 const domain = window.location.hostname;
 if (domain === 'localhost' || domain === '127.0.0.1' || domain.includes('192.168.')) {
