@@ -8,6 +8,7 @@ if (domain === 'localhost' || domain === '127.0.0.1' || domain.includes('192.168
 } else {
   BACKEND_URL = 'wss://moontuni.properbd.net';
 }
+// TODO optimize socket connection
 export const socket = io(BACKEND_URL);
 
 type IMessage = {

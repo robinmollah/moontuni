@@ -34,6 +34,7 @@ const LoginUsingEmailPassword = () => {
         const user = userCredential.user;
         // ...
         console.log('Logged in', user);
+        window.location.href = '/';
       })
       .catch((error) => {
         // const errorCode = error.code;

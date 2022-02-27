@@ -7,7 +7,7 @@ const Login = () => {
     <Flex flexDirection="column" height="100vh" backgroundColor="gray.200" justifyContent="center" alignItems="center">
       <Stack flexDir="column" justifyContent="center" alignItems="center">
         <Avatar bg="teal.500" />
-        <Heading color="teal.400">Welcome</Heading>
+        <Heading color="teal.400">Welcome to Moontuni</Heading>
         <Box>
           <LoginUsingEmailPassword />
         </Box>

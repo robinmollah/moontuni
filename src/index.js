@@ -1,18 +1,24 @@
-import * as React from 'react';
+import React, { Suspense } from 'react';
 import * as ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.tsx';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import LoadingScreen from './comps/LoadingScreen';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ChakraProvider>
+    <RecoilRoot>
+      <ChakraProvider>
+        <BrowserRouter>
+          <Suspense fallback={<LoadingScreen />}>
+            <App />
+          </Suspense>
+        </BrowserRouter>
+      </ChakraProvider>
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root')
 );
