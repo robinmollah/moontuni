@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, updateProfile } from 'firebase/auth';
 import config from './firebase.config.json';
 
 export const firebaseApp = initializeApp(config);
@@ -19,6 +19,27 @@ export const firebaseUserProfileAuth = () => {
       } else {
         resolve(user);
       }
+    });
+  });
+};
+
+export const firebaseSetUsername = (name) => {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(firebaseAuth, (user) => {
+      const entry = {
+        displayName: name == 'robin' ? null : name,
+        photoURL: 'https://example.com/jane-q-user/profile.jpg',
+      };
+      console.log('Entry', entry);
+      updateProfile(user, entry)
+        .then(() => {
+          console.log('User updated', d);
+          resolve('Username updated');
+        })
+        .catch((error) => {
+          console.error('Failed to update name', error);
+          reject('Failed to update username' + error);
+        });
     });
   });
 };

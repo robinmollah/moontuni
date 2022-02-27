@@ -1,9 +1,10 @@
 import * as React from 'react';
 import Conversation from './Conversation';
 import { io } from 'socket.io-client';
-// import { useRecoilValue } from 'recoil';
-// import { firebaseUserSelector } from '../state/selectors';
-let BACKEND_URL;
+import { useRecoilValue } from 'recoil';
+import { firebaseUserSelector } from '../state/selectors';
+import AskName from '../Profile/AskName';
+let BACKEND_URL: string;
 const domain = window.location.hostname;
 if (domain === 'localhost' || domain === '127.0.0.1' || domain.includes('192.168.')) {
   BACKEND_URL = 'ws://192.168.1.125:4002';
@@ -11,7 +12,6 @@ if (domain === 'localhost' || domain === '127.0.0.1' || domain.includes('192.168
   BACKEND_URL = 'wss://moontuni.properbd.net';
 }
 // TODO optimize socket connection
-export const socket = io(BACKEND_URL);
 
 type IMessage = {
   sender: string;
@@ -20,7 +20,9 @@ type IMessage = {
 };
 
 const Dashboard = () => {
-  // const user = useRecoilValue(firebaseUserSelector);
+  const socket = io(BACKEND_URL);
+  const user = useRecoilValue(firebaseUserSelector);
+  if (!user.name) return <AskName />;
   const [messages, setMessages] = React.useState<IMessage[]>([
     { text: 'Hi', sender: '1', date: Date.now() },
     { text: 'Hello', sender: 'robinsajin@gmail.com', date: Date.now() },
@@ -41,18 +43,19 @@ const Dashboard = () => {
     setAttachedListener(true);
   }
 
+  function sendMessage(text: string, email: string | null) {
+    socket.emit('chat_message', {
+      sender: email || 'anonymous',
+      text: text,
+      time: Date.now(),
+    });
+  }
+
   function addMessage(msg: IMessage) {
+    sendMessage(msg.text, msg.sender);
     setMessages([...messages, msg]);
   }
   return <Conversation messages={messages} addMessage={addMessage} />;
 };
-
-export function sendMessage(text: string, email: string | null) {
-  socket.emit('chat_message', {
-    sender: email || 'anonymous',
-    text: text,
-    time: Date.now(),
-  });
-}
 
 export default Dashboard;

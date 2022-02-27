@@ -6,6 +6,7 @@ import Signup from './Auth/Signup';
 import Dashboard from './LoggedIn/Dashboard';
 import { useRecoilValue } from 'recoil';
 import { firebaseUserSelector, userLoggedInState } from './state/selectors';
+import AskName from './Profile/AskName';
 
 function App() {
   const firebaseUser = useRecoilValue(firebaseUserSelector);
@@ -15,6 +16,7 @@ function App() {
     return (
       <Routes>
         <Route path="/" element={<Dashboard />} />
+        <Route path={'/update/username'} element={<AskName />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     );

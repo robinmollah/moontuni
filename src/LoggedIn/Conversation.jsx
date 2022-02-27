@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Flex, Heading, Input, Table, Tbody, Td, Tr } from '@chakra-ui/react';
-import { sendMessage } from './Dashboard.tsx';
 import useWindowSize from '../hoooks/useWindowSize';
 import { firebaseUserSelector } from '../state/selectors';
 import { useRecoilValue } from 'recoil';
@@ -15,7 +14,6 @@ const Conversation = ({ messages, addMessage }) => {
     // setMessages([...messages, { text: message, sender: email, time: Date.now() }]);
     addMessage({ text: message, sender: user.email, time: Date.now() });
     setMessage('');
-    sendMessage(message, user.email);
   };
   const messagesEndRef = useRef(null);
   const scrollToBottom = () => {

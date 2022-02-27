@@ -1,25 +1,30 @@
 import React from 'react';
-import { Button, Heading, Input, Stack } from '@chakra-ui/react';
-import { firebaseAuth } from '../firebase-app';
-import { useRecoilValue } from 'recoil';
+import { Button, Heading, Input, Stack, useToast } from '@chakra-ui/react';
+import { firebaseSetUsername } from '../firebase-app';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { IUserProfile, profileAtom } from '../state/atoms';
 
 const AskName = () => {
-  const user = firebaseAuth.currentUser as any;
   const currentName = useRecoilValue<IUserProfile>(profileAtom).name;
+  const [profile, setProfile] = useRecoilState(profileAtom);
   const [name, setName] = React.useState('');
+  const toast = useToast();
 
   const setDisplayName = () => {
-    user
-      .updateProfile({
-        displayName: name,
-        photoURL: 'https://example.com/jane-q-user/profile.jpg',
+    firebaseSetUsername(name)
+      .then((d) => {
+        toast({
+          title: d,
+        });
+        setProfile({ ...profile, name: name });
+        window.location.reload();
       })
-      .then(() => {
-        console.log('User updated');
-      })
-      .catch((error: any) => {
-        console.error('Failed to update name', error);
+      .catch((e) => {
+        toast({
+          status: 'error',
+          title: 'Failed to update user name',
+          description: 'Failed ' + e.message,
+        });
       });
   };
 

@@ -1,5 +1,5 @@
-import { selector } from 'recoil';
-import { firebaseUserProfileAuth } from '../firebase-app';
+import { selector, selectorFamily } from 'recoil';
+import { firebaseSetUsername, firebaseUserProfileAuth } from '../firebase-app';
 
 export const firebaseUserSelector = selector({
   async get({}) {
@@ -17,11 +17,12 @@ export const userLoggedInState = selector<boolean>({
   },
 });
 
-// export const testSelector = selector({
-// 	get(opts: { get: GetRecoilValue; getCallback: GetCallback }): Promise<T> | RecoilValue<T> | T {
-// 		return undefined;
-// 	},
-// 	key: "",
-// 	set<T>(opts: { set: SetRecoilState; get: GetRecoilValue; reset: ResetRecoilState }, newValue: DefaultValue | T): void {
-// 	}
-// });
+export const setUserNameSelector = selectorFamily({
+  key: 'setUserName',
+  get:
+    (name: string) =>
+    async ({}) => {
+      const updateStatus = await firebaseSetUsername(name);
+      return updateStatus;
+    },
+});
