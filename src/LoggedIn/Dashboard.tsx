@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Conversation from './Conversation';
 import { io } from 'socket.io-client';
+// import { useRecoilValue } from 'recoil';
+// import { firebaseUserSelector } from '../state/selectors';
 let BACKEND_URL;
 const domain = window.location.hostname;
 if (domain === 'localhost' || domain === '127.0.0.1' || domain.includes('192.168.')) {
@@ -18,6 +20,7 @@ type IMessage = {
 };
 
 const Dashboard = () => {
+  // const user = useRecoilValue(firebaseUserSelector);
   const [messages, setMessages] = React.useState<IMessage[]>([
     { text: 'Hi', sender: '1', date: Date.now() },
     { text: 'Hello', sender: 'robinsajin@gmail.com', date: Date.now() },
@@ -44,9 +47,9 @@ const Dashboard = () => {
   return <Conversation messages={messages} addMessage={addMessage} />;
 };
 
-export function sendMessage(text: string) {
+export function sendMessage(text: string, email: string | null) {
   socket.emit('chat_message', {
-    sender: window.localStorage['email'] || 'anonymous',
+    sender: email || 'anonymous',
     text: text,
     time: Date.now(),
   });

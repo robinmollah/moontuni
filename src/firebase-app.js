@@ -9,6 +9,7 @@ export const firebaseUserProfileAuth = () => {
   return new Promise((resolve) => {
     onAuthStateChanged(firebaseAuth, (user) => {
       if (user) {
+        console.log('on auth state change');
         resolve({
           name: user.displayName,
           dp_url: user.photoURL,

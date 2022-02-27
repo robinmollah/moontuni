@@ -30,10 +30,14 @@ const LoginUsingEmailPassword = () => {
   const onLogin = () => {
     signInWithEmailAndPassword(firebaseAuth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
-        // ...
         console.log('Logged in', user);
+        toast({
+          title: 'Logged In',
+          description: 'Successfully logged in',
+          duration: 5000,
+          isClosable: true,
+        });
         window.location.href = '/';
       })
       .catch((error) => {
