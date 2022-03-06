@@ -4,6 +4,7 @@ import { Button, Flex, Heading, Input, Table, Tbody, Td, Tr } from '@chakra-ui/r
 import useWindowSize from '../hoooks/useWindowSize';
 import { firebaseUserSelector } from '../state/selectors';
 import { useRecoilValue } from 'recoil';
+import Hamburger from '../comps/Hamburger';
 
 const Conversation = ({ messages, addMessage }) => {
   const user = useRecoilValue(firebaseUserSelector);
@@ -32,8 +33,16 @@ const Conversation = ({ messages, addMessage }) => {
 
   return (
     <>
-      <Heading align={'center'} position="fixed" top={'1px'} width={'100%'}>
+      <Heading
+        display={'flex'}
+        justifyContent={'space-between'}
+        align={'center'}
+        position="fixed"
+        top={'1px'}
+        width={'100%'}
+      >
         {user.email}
+        <Hamburger />
       </Heading>
       <Table marginTop={'2em'} marginBottom={'3em'}>
         <Tbody>

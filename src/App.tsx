@@ -5,13 +5,12 @@ import { Route, Routes } from 'react-router-dom';
 import Signup from './Auth/Signup';
 import Dashboard from './LoggedIn/Dashboard';
 import { useRecoilValue } from 'recoil';
-import { firebaseUserSelector, userLoggedInState } from './state/selectors';
+import { userLoggedInState } from './state/selectors';
 import AskName from './Profile/AskName';
+export const DEBUG = true;
 
 function App() {
-  const firebaseUser = useRecoilValue(firebaseUserSelector);
   const isUserLoggedIn = useRecoilValue(userLoggedInState);
-  console.log('fire', isUserLoggedIn, firebaseUser);
   if (isUserLoggedIn) {
     return (
       <Routes>
