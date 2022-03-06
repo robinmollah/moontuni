@@ -42,6 +42,9 @@ const Conversation = ({ messages, addMessage }) => {
         position="fixed"
         top={'1px'}
         width={'100%'}
+        backgroundColor={'rgb(173,123,123)'}
+        padding={'4px'}
+        boxShadow={'rgb(173,123,123) 0px 4px 4px'}
       >
         <IconButton icon={<MdArrowBack />}></IconButton>
         <Avatar bg="teal.500" />
@@ -62,7 +65,15 @@ const Conversation = ({ messages, addMessage }) => {
         </Tbody>
       </Table>
       <div ref={messagesEndRef} />
-      <Flex backdropBlur={true} backgroundColor={'white'} position="fixed" bottom={'1em'} width={'100%'}>
+      <Flex
+        backgroundColor={'rgb(173,123,123)'}
+        backdropBlur={true}
+        position="fixed"
+        padding={'1em'}
+        bottom={'1px'}
+        width={'100%'}
+        alignItems={'center'}
+      >
         <Input type={'text'} onChange={(e) => setMessage(e.target.value)} value={message} onKeyDown={handleKeyDown} />
         <Button onClick={sendTextMessage}>Send</Button>
       </Flex>
