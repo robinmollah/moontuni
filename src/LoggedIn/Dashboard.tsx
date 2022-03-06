@@ -7,7 +7,7 @@ import AskName from '../Profile/AskName';
 let BACKEND_URL: string;
 const domain = window.location.hostname;
 if (domain === 'localhost' || domain === '127.0.0.1' || domain.includes('192.168.')) {
-  BACKEND_URL = 'ws://192.168.1.125:4002';
+  BACKEND_URL = 'ws://127.0.0.1:4002';
 } else {
   BACKEND_URL = 'wss://moontuni.properbd.net';
 }

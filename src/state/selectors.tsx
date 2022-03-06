@@ -4,6 +4,14 @@ import { DEBUG } from '../App';
 
 export const firebaseUserSelector = selector({
   async get({}) {
+    if (DEBUG) {
+      return {
+        name: 'Robin Molla',
+        dp_url: 'https://example.com/jane-q-user/profile.jpg',
+        email: 'robinsajin@gmail.com',
+        emailVerified: false,
+      };
+    }
     const user = firebaseUserProfileAuth();
     return user;
   },

@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Flex, Heading, Input, Table, Tbody, Td, Tr } from '@chakra-ui/react';
+import { Avatar, Box, Button, Flex, IconButton, Input, Table, Tbody, Td, Tr } from '@chakra-ui/react';
 import useWindowSize from '../hoooks/useWindowSize';
 import { firebaseUserSelector } from '../state/selectors';
 import { useRecoilValue } from 'recoil';
 import Hamburger from '../comps/Hamburger';
+import { MdArrowBack } from 'react-icons/md';
 
 const Conversation = ({ messages, addMessage }) => {
   const user = useRecoilValue(firebaseUserSelector);
@@ -33,17 +34,20 @@ const Conversation = ({ messages, addMessage }) => {
 
   return (
     <>
-      <Heading
+      <Box
         display={'flex'}
-        justifyContent={'space-between'}
+        justifyContent={'space-around'}
+        alignItems={'center'}
         align={'center'}
         position="fixed"
         top={'1px'}
         width={'100%'}
       >
+        <IconButton icon={<MdArrowBack />}></IconButton>
+        <Avatar bg="teal.500" />
         {user.email}
         <Hamburger />
-      </Heading>
+      </Box>
       <Table marginTop={'2em'} marginBottom={'3em'}>
         <Tbody>
           {messages.map((message, idx) => (
