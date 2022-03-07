@@ -10,13 +10,13 @@ export const usersChats = selector<IConversation[]>({
         {
           participants: 'Moontuni',
           messages: [],
-          last_message: null,
+          last_message: 'I love you',
           last_msg_time: new Date(),
         },
         {
-          participants: 'Tuntuni',
+          participants: 'Jacky chan',
           messages: [],
-          last_message: null,
+          last_message: 'I am gonna fight you',
           last_msg_time: new Date(),
         },
       ];

@@ -1,42 +1,26 @@
 import React from 'react';
-import { Avatar, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Avatar, Table, Tbody, Td, Tr } from '@chakra-ui/react';
+import { usersChats } from '../state/chats/usersChatSelectors';
+import { useRecoilValue } from 'recoil';
 
 const ChatList = () => {
-  const response = [
-    {
-      id: 1,
-      name: 'Susmita Moon',
-      lastMessage: 'I love you',
-      time: Date.now() - 12 * 1000 * 100,
-    },
-    {
-      id: 2,
-      name: 'Jack Chan',
-      lastMessage: 'Nothing',
-      time: Date.now() - 12 * 1000 * 100,
-    },
-  ];
+  const response = useRecoilValue(usersChats);
 
   return (
     <Table variant="simple">
-      <Thead>
-        <Tr>
-          <Th colspan={3}>Message List</Th>
-        </Tr>
-      </Thead>
       <Tbody>
         {response.map((message) => {
           return (
             <Tr key={message.id}>
-              <Td width={'20%'}>
+              <Td width={'15%'}>
                 <Avatar />
               </Td>
-              <Td width={'65%'} align={'left'} paddingLeft={'0px'}>
-                <b>{message.name}</b>
+              <Td width={'70%'} align={'left'} paddingLeft={'0px'}>
+                <b>{message.participants}</b>
                 <br />
-                {message.lastMessage}
+                {message.last_message}
               </Td>
-              <Td width={'15%'}>{new Date(message.time).toString().substring(15, 25)}</Td>
+              <Td width={'15%'}>{new Date(message.last_msg_time).toString().substring(15, 25)}</Td>
             </Tr>
           );
         })}

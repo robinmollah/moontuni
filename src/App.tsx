@@ -7,7 +7,7 @@ import ConversationContainer from './LoggedIn/ConversationContainer';
 import { useRecoilValue } from 'recoil';
 import { userLoggedInState } from './state/selectors';
 import AskName from './Profile/AskName';
-import ChatList from './LoggedIn/ChatList';
+import TabContainer from './LoggedIn/TabContainer';
 export const DEBUG = true;
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     return (
       <Routes>
         <Route path="/chat/:slug" element={<ConversationContainer />} />
-        <Route path="/" element={<ChatList />} />
+        <Route path="/" element={<TabContainer />} />
         <Route path={'/update/username'} element={<AskName />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
