@@ -3,10 +3,11 @@ import * as React from 'react';
 import Login from './Auth/Login';
 import { Route, Routes } from 'react-router-dom';
 import Signup from './Auth/Signup';
-import Dashboard from './LoggedIn/Dashboard';
+import ConversationContainer from './LoggedIn/ConversationContainer';
 import { useRecoilValue } from 'recoil';
 import { userLoggedInState } from './state/selectors';
 import AskName from './Profile/AskName';
+import ChatList from './LoggedIn/ChatList';
 export const DEBUG = true;
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
   if (isUserLoggedIn) {
     return (
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/chat/:slug" element={<ConversationContainer />} />
+        <Route path="/" element={<ChatList />} />
         <Route path={'/update/username'} element={<AskName />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>

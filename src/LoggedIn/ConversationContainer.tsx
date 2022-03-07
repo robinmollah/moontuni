@@ -19,7 +19,7 @@ type IMessage = {
   date: number;
 };
 
-const Dashboard = () => {
+const ConversationContainer = () => {
   const socket = io(BACKEND_URL);
   const user = useRecoilValue(firebaseUserSelector);
   if (!user.name) return <AskName />;
@@ -58,4 +58,4 @@ const Dashboard = () => {
   return <Conversation messages={messages} addMessage={addMessage} />;
 };
 
-export default Dashboard;
+export default ConversationContainer;

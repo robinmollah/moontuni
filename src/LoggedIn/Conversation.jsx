@@ -40,7 +40,7 @@ const Conversation = ({ messages, addMessage }) => {
         alignItems={'center'}
         align={'center'}
         position="fixed"
-        top={'1px'}
+        top={'0px'}
         width={'100%'}
         backgroundColor={'rgb(173,123,123)'}
         padding={'4px'}
@@ -51,7 +51,7 @@ const Conversation = ({ messages, addMessage }) => {
         {user.email}
         <Hamburger />
       </Box>
-      <Table marginTop={'2em'} marginBottom={'3em'}>
+      <Table marginTop={'3em'} marginBottom={'3.8em'}>
         <Tbody>
           {messages.map((message, idx) => (
             <Tr key={idx}>
@@ -70,7 +70,7 @@ const Conversation = ({ messages, addMessage }) => {
         backdropBlur={true}
         position="fixed"
         padding={'1em'}
-        bottom={'1px'}
+        bottom={'0px'}
         width={'100%'}
         alignItems={'center'}
       >

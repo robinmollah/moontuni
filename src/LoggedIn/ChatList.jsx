@@ -1,12 +1,12 @@
 import React from 'react';
-import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from '@chakra-ui/react';
+import { Avatar, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 
-const MessageList = () => {
+const ChatList = () => {
   const response = [
     {
       id: 1,
-      name: 'John Doe',
-      lastMessage: 'Something',
+      name: 'Susmita Moon',
+      lastMessage: 'I love you',
       time: Date.now() - 12 * 1000 * 100,
     },
     {
@@ -28,21 +28,21 @@ const MessageList = () => {
         {response.map((message) => {
           return (
             <Tr key={message.id}>
-              <Td width={'20%'}>{message.name}</Td>
-              <Td width={'65%'}>{message.lastMessage}</Td>
+              <Td width={'20%'}>
+                <Avatar />
+              </Td>
+              <Td width={'65%'} align={'left'} paddingLeft={'0px'}>
+                <b>{message.name}</b>
+                <br />
+                {message.lastMessage}
+              </Td>
               <Td width={'15%'}>{new Date(message.time).toString().substring(15, 25)}</Td>
             </Tr>
           );
         })}
       </Tbody>
-      <Tfoot>
-        <Tr>
-          <Th>To convert</Th>
-          <Th>into</Th>
-        </Tr>
-      </Tfoot>
     </Table>
   );
 };
 
-export default MessageList;
+export default ChatList;

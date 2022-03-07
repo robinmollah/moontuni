@@ -2,10 +2,24 @@ import { selector } from 'recoil';
 import { DEBUG } from '../../App';
 import { IConversation } from '../atoms';
 
-export const usersChats = selector<string[]>({
+export const usersChats = selector<IConversation[]>({
   key: 'usersChats',
   get: ({}) => {
-    if (DEBUG) return ['user_id1', 'user_id2'];
+    if (DEBUG)
+      return [
+        {
+          participants: 'Moontuni',
+          messages: [],
+          last_message: null,
+          last_msg_time: new Date(),
+        },
+        {
+          participants: 'Tuntuni',
+          messages: [],
+          last_message: null,
+          last_msg_time: new Date(),
+        },
+      ];
   },
 });
 
@@ -16,6 +30,7 @@ export const getConversation = selector<IConversation>({
       participants: [],
       messages: [],
       last_message: null,
+      last_msg_time: new Date(),
     };
   },
 });

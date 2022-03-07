@@ -15,9 +15,10 @@ export interface IMessage {
 }
 
 export interface IConversation {
-  participants: string[];
+  participants: string[] | string;
   messages: IMessage[];
-  last_message: IMessage;
+  last_message: string;
+  last_msg_time: Date;
 }
 
 export const profileAtom = atom<IUserProfile>({
@@ -36,5 +37,6 @@ export const chatList = atom<IConversation>({
     participants: [],
     messages: [],
     last_message: null,
+    last_msg_time: new Date(),
   },
 });
