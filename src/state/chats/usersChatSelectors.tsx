@@ -8,13 +8,19 @@ export const usersChats = selector<IConversation[]>({
     if (DEBUG)
       return [
         {
-          participants: 'Moontuni',
+          participants: {
+            id: 1,
+            name: 'Moontuni',
+          },
           messages: [],
           last_message: 'I love you',
           last_msg_time: new Date(),
         },
         {
-          participants: 'Jacky chan',
+          participants: {
+            id: 1,
+            name: 'Hack',
+          },
           messages: [],
           last_message: 'I am gonna fight you',
           last_msg_time: new Date(),

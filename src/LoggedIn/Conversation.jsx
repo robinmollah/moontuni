@@ -6,11 +6,13 @@ import { firebaseUserSelector } from '../state/selectors';
 import { useRecoilValue } from 'recoil';
 import Hamburger from '../comps/Hamburger';
 import { MdArrowBack } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 const Conversation = ({ messages, addMessage }) => {
   const user = useRecoilValue(firebaseUserSelector);
   const [message, setMessage] = React.useState('');
   const windowSize = useWindowSize();
+  const navigate = useNavigate();
 
   const sendTextMessage = () => {
     // setMessages([...messages, { text: message, sender: email, time: Date.now() }]);
@@ -46,7 +48,7 @@ const Conversation = ({ messages, addMessage }) => {
         padding={'4px'}
         boxShadow={'rgb(173,123,123) 0px 4px 4px'}
       >
-        <IconButton icon={<MdArrowBack />}></IconButton>
+        <IconButton icon={<MdArrowBack />} onClick={() => navigate(-1)} />
         <Avatar bg="teal.500" />
         {user.email}
         <Hamburger />

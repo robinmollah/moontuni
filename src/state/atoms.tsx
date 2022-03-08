@@ -1,4 +1,5 @@
 import { atom } from 'recoil';
+import { IContact } from './contacts/atoms';
 
 export interface IUserProfile {
   name: string;
@@ -15,7 +16,7 @@ export interface IMessage {
 }
 
 export interface IConversation {
-  participants: string[] | string;
+  participants: IContact[] | IContact;
   messages: IMessage[];
   last_message: string;
   last_msg_time: Date;

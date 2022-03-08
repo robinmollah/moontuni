@@ -2,16 +2,19 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { contactsAtoms } from '../state/contacts/atoms';
 import { Avatar, AvatarBadge, Badge, Table, Tbody, Td, Tr } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const ContactList = () => {
   const contacts = useRecoilValue(contactsAtoms);
+  const navigate = useNavigate();
+
   return (
     <div>
       <Table variant="simple">
         <Tbody>
           {contacts.map((contact) => {
             return (
-              <Tr key={contact.id}>
+              <Tr key={contact.id} onClick={() => navigate('/profile/' + contact.id)}>
                 <Td width={'15%'}>
                   <Avatar>
                     <AvatarBadge boxSize="1em" bg="green.500" />

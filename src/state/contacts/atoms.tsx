@@ -1,11 +1,11 @@
 import { atom } from 'recoil';
 
-interface IContact {
+export interface IContact {
   id: number;
   name: string;
-  email: string;
-  phone: string;
-  avatar: string;
+  email?: string;
+  phone?: string;
+  avatar?: string;
 }
 
 export const contactsAtoms = atom<IContact[]>({
