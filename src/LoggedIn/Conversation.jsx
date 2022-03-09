@@ -38,19 +38,21 @@ const Conversation = ({ messages, addMessage }) => {
     <>
       <Box
         display={'flex'}
-        justifyContent={'space-around'}
+        justifyContent={'space-between'}
         alignItems={'center'}
         align={'center'}
         position="fixed"
         top={'0px'}
         width={'100%'}
+        padding={'0px 1em'}
         backgroundColor={'rgb(173,123,123)'}
-        padding={'4px'}
         boxShadow={'rgb(173,123,123) 0px 4px 4px'}
       >
         <IconButton icon={<MdArrowBack />} onClick={() => navigate(-1)} />
-        <Avatar bg="teal.500" />
-        {user.email}
+        <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
+          <Avatar bg="teal.500" marginRight={'1em'} />
+          <p>{user.email}</p>
+        </Box>
         <Hamburger />
       </Box>
       <Table marginTop={'3em'} marginBottom={'3.8em'}>

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Avatar, Table, Tbody, Td, Tr } from '@chakra-ui/react';
+import { Avatar, Box, Table, Tbody, Td, Tr } from '@chakra-ui/react';
 import { usersChats } from '../state/chats/usersChatSelectors';
 import { useRecoilValue } from 'recoil';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 const ChatList = () => {
   const response = useRecoilValue(usersChats);
@@ -27,7 +28,9 @@ const ChatList = () => {
                 <br />
                 {message.last_message}
               </Td>
-              <Td width={'15%'}>{new Date(message.last_msg_time).toString().substring(15, 25)}</Td>
+              <Td width={'15%'}>
+                <Box>{moment(message.last_msg_time).fromNow()}</Box>
+              </Td>
             </Tr>
           );
         })}
