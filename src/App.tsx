@@ -8,6 +8,7 @@ import { useRecoilValue } from 'recoil';
 import { userLoggedInState } from './state/selectors';
 import AskName from './Profile/AskName';
 import TabContainer from './LoggedIn/TabContainer';
+import PrivacyPolicy from './comps/PrivacyPolicy';
 export const DEBUG = true;
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/chat/:slug" element={<ConversationContainer />} />
         <Route path="/" element={<TabContainer />} />
         <Route path={'/update/username'} element={<AskName />} />
+        <Route path={'/privacy'} element={<PrivacyPolicy />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     );
