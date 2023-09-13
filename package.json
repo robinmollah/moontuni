@@ -17,6 +17,7 @@
     "email-validator": "^2.0.4",
     "firebase": "^9.6.6",
     "framer-motion": "^6",
+    "functions-have-names": "^1.2.3",
     "javascript-time-ago": "^2.3.13",
     "moment": "^2.29.1",
     "prettier": "^2.5.1",
@@ -37,7 +38,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "firebase deploy --only hosting"
+    "deploy": "firebase deploy --only hosting",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
@@ -58,7 +61,20 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "7.4.1",
+    "@storybook/addon-interactions": "7.4.1",
+    "@storybook/addon-links": "7.4.1",
+    "@storybook/addon-onboarding": "1.0.8",
+    "@storybook/blocks": "7.4.1",
+    "@storybook/preset-create-react-app": "7.4.1",
+    "@storybook/react": "7.4.1",
+    "@storybook/react-webpack5": "7.4.1",
+    "@storybook/testing-library": "0.2.0",
+    "babel-plugin-named-exports-order": "0.0.2",
     "eslint": "^8.9.0",
-    "prop-types": "^15.8.1"
+    "eslint-plugin-storybook": "^0.6.13",
+    "prop-types": "^15.8.1",
+    "storybook": "7.4.1",
+    "webpack": "5.88.2"
   }
 }

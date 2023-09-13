@@ -9,7 +9,8 @@ import { userLoggedInState } from './state/selectors';
 import AskName from './Profile/AskName';
 import TabContainer from './LoggedIn/TabContainer';
 import PrivacyPolicy from './comps/PrivacyPolicy';
-export const DEBUG = true;
+import ForgotPassword from "./Auth/ForgotPassword";
+export const DEBUG = false;
 
 function App() {
   const isUserLoggedIn = useRecoilValue(userLoggedInState);
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="/reset_password" element={<ForgotPassword />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     );

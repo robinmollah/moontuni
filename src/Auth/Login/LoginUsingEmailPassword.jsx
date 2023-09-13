@@ -81,7 +81,7 @@ const LoginUsingEmailPassword = () => {
               </InputRightElement>
             </InputGroup>
             <FormHelperText textAlign="right">
-              <Link>forgot password?</Link>
+              <Link href={"/reset_password"}>forgot password?</Link>
             </FormHelperText>
           </FormControl>
         </Stack>

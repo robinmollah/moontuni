@@ -9,6 +9,10 @@ const ChatList = () => {
   const response = useRecoilValue(usersChats);
   const navigate = useNavigate();
 
+  if (!response || response.length === 0) {
+      return <b>No conversation</b>
+  }
+
   return (
     <Table variant="simple">
       <Tbody>

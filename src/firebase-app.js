@@ -9,7 +9,7 @@ export const firebaseUserProfileAuth = () => {
   return new Promise((resolve) => {
     onAuthStateChanged(firebaseAuth, (user) => {
       if (user) {
-        console.log('on auth state change');
+        console.log('on auth state change', user);
         resolve({
           name: user.displayName,
           dp_url: user.photoURL,
@@ -27,7 +27,7 @@ export const firebaseSetUsername = (name) => {
   return new Promise((resolve, reject) => {
     onAuthStateChanged(firebaseAuth, (user) => {
       const entry = {
-        displayName: name == 'robin' ? null : name,
+        displayName: name === 'robin' ? null : name,
         photoURL: 'https://example.com/jane-q-user/profile.jpg',
       };
       console.log('Entry', entry);
