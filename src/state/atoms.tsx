@@ -9,10 +9,12 @@ export interface IUserProfile {
 }
 
 export interface IMessage {
-  id: string;
-  text: string;
-  createdAt: string;
-  user: IUserProfile;
+  id?: string;
+  text?: string;
+  createdAt?: string;
+  user?: IUserProfile;
+  time?: number;
+  sender?: string;
 }
 
 export interface IConversation {

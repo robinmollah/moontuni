@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { Avatar, Box, Button, Flex, IconButton, Input, Table, Tbody, Td, Tr } from '@chakra-ui/react';
 import useWindowSize from '../hoooks/useWindowSize';
 import { firebaseUserSelector } from '../state/selectors';
@@ -7,15 +6,22 @@ import { useRecoilValue } from 'recoil';
 import Hamburger from '../comps/Hamburger';
 import { MdArrowBack } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import {IMessage, IUserProfile} from "../state/atoms";
 
-const Conversation = ({ messages, addMessage }) => {
-  const user = useRecoilValue(firebaseUserSelector);
+export interface ConversationProps {
+    messages: IMessage[];
+    // eslint-disable-next-line no-unused-vars
+    addMessage: (msg: IMessage) => void;
+}
+
+const Conversation = ({ messages, addMessage }: ConversationProps) => {
+  const user : IUserProfile = useRecoilValue(firebaseUserSelector);
+  console.log("user")
   const [message, setMessage] = React.useState('');
   const windowSize = useWindowSize();
   const navigate = useNavigate();
 
   const sendTextMessage = () => {
-    // setMessages([...messages, { text: message, sender: email, time: Date.now() }]);
     addMessage({ text: message, sender: user.email, time: Date.now() });
     setMessage('');
   };
@@ -28,11 +34,12 @@ const Conversation = ({ messages, addMessage }) => {
     scrollToBottom();
   }, [messages, windowSize]);
 
-  function handleKeyDown(event) {
+  function handleKeyDown(event: { key: string; }) {
     if (event.key === 'Enter') {
       sendTextMessage();
     }
   }
+
 
   return (
     <>
@@ -40,7 +47,6 @@ const Conversation = ({ messages, addMessage }) => {
         display={'flex'}
         justifyContent={'space-between'}
         alignItems={'center'}
-        align={'center'}
         position="fixed"
         top={'0px'}
         width={'100%'}
@@ -48,7 +54,7 @@ const Conversation = ({ messages, addMessage }) => {
         backgroundColor={'rgb(173,123,123)'}
         boxShadow={'rgb(173,123,123) 0px 4px 4px'}
       >
-        <IconButton icon={<MdArrowBack />} onClick={() => navigate(-1)} />
+        <IconButton aria-label="Back" icon={<MdArrowBack />} onClick={() => navigate(-1)} />
         <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
           <Avatar bg="teal.500" marginRight={'1em'} />
           <p>{user.email}</p>
@@ -59,7 +65,7 @@ const Conversation = ({ messages, addMessage }) => {
         <Tbody>
           {messages.map((message, idx) => (
             <Tr key={idx}>
-              <Td float={message.sender === user.email && 'right'}>
+              <Td float={message.sender === user.email ? 'right' : 'left'}>
                 <b>{message.text}</b>
                 <br />
                 <small>{message.sender.toString().substring(0, 12)}</small>
@@ -83,11 +89,6 @@ const Conversation = ({ messages, addMessage }) => {
       </Flex>
     </>
   );
-};
-
-Conversation.propTypes = {
-  messages: PropTypes.array.isRequired,
-  addMessage: PropTypes.func.isRequired,
 };
 
 export default Conversation;
