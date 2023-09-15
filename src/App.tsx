@@ -3,7 +3,7 @@ import * as React from 'react';
 import Login from './Auth/Login';
 import { Route, Routes } from 'react-router-dom';
 import Signup from './Auth/Signup';
-import ConversationContainer from './LoggedIn/ConversationContainer';
+import ConversationContainer from './LoggedIn/Conversation/ConversationContainer';
 import { useRecoilValue } from 'recoil';
 import { userLoggedInState } from './state/selectors';
 import AskName from './Profile/AskName';

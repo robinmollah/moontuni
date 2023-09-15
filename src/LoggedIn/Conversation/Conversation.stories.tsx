@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from '@storybook/react';
 
 import Conversation from './Conversation';
-import {IMessage} from "../state/atoms";
+import {IMessage} from "../../state/atoms";
 import {withRecoilFlow} from "storybook-addon-recoil-flow/dist/decorator";
 import {RecoilRoot} from "recoil";
 import React, {Suspense} from "react";

@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { Avatar, Box, Button, Flex, IconButton, Input, Table, Tbody, Td, Tr } from '@chakra-ui/react';
-import useWindowSize from '../hoooks/useWindowSize';
-import { firebaseUserSelector } from '../state/selectors';
+import useWindowSize from '../../hoooks/useWindowSize';
+import { firebaseUserSelector } from '../../state/selectors';
 import { useRecoilValue } from 'recoil';
-import Hamburger from '../comps/Hamburger';
+import Hamburger from '../../comps/Hamburger';
 import { MdArrowBack } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import {IMessage, IUserProfile} from "../state/atoms";
+import {IMessage, IUserProfile} from "../../state/atoms";
 
 export interface ConversationProps {
     messages: IMessage[];

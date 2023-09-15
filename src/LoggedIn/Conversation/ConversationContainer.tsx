@@ -2,8 +2,8 @@ import * as React from 'react';
 import Conversation from './Conversation';
 import { io } from 'socket.io-client';
 import { useRecoilValue } from 'recoil';
-import { firebaseUserSelector } from '../state/selectors';
-import AskName from '../Profile/AskName';
+import { firebaseUserSelector } from '../../state/selectors';
+import AskName from '../../Profile/AskName';
 let BACKEND_URL: string;
 const domain = window.location.hostname;
 if (domain === 'localhost' || domain === '127.0.0.1' || domain.includes('192.168.')) {
