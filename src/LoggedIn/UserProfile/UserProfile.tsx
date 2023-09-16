@@ -1,10 +1,12 @@
 import React from 'react';
 import {Divider, Flex, Image, Text} from "@chakra-ui/react";
 import {useRecoilValue} from "recoil";
-import {profileAtom} from "../../state/atoms";
+import {firebaseUserSelector} from "../../state/selectors";
+import {IUserProfile} from "../../state/atoms";
 
 const UserProfile = () => {
-    const profile = useRecoilValue(profileAtom);
+    const profile : IUserProfile =  useRecoilValue(firebaseUserSelector);
+    console.log("firebaseUserSelector", profile);
 
     return (
         <Flex alignItems={"center"} justifyContent={"center"} direction={"column"}>
@@ -12,11 +14,12 @@ const UserProfile = () => {
             <Image
                 borderRadius={"full"}
                 boxSize={"150px"}
-                src={profile.dp_url}
+                src={profile.photoURL + "?alt=media"}
                 alt={"Profile picture"}
             />
-            <Text fontSize={"lg"} fontWeight={"semibold"} marginY={"1em"}>{profile.name}</Text>
+            <Text fontSize={"lg"} fontWeight={"semibold"} marginY={"1em"}>{profile.displayName}</Text>
             <Divider/>
+            <Text fontSize={"sm"}>{profile.uid}</Text>
         </Flex>
     );
 

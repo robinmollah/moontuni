@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { IUserProfile, profileAtom } from '../state/atoms';
 
 const AskName = () => {
-  const currentName = useRecoilValue<IUserProfile>(profileAtom).name;
+  const currentName = useRecoilValue<IUserProfile>(profileAtom).displayName;
   const [profile, setProfile] = useRecoilState(profileAtom);
   const [name, setName] = React.useState('');
   const toast = useToast();
@@ -16,7 +16,7 @@ const AskName = () => {
         toast({
           title: d,
         });
-        setProfile({ ...profile, name: name });
+        setProfile({ ...profile, displayName: name });
         window.location.reload();
       })
       .catch((e) => {

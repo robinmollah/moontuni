@@ -11,10 +11,11 @@ export const firebaseUserProfileAuth = () => {
       if (user) {
         console.log('on auth state change', user);
         resolve({
-          name: user.displayName,
-          dp_url: user.photoURL,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
           email: user.email,
           emailVerified: user.emailVerified,
+          uid: user.uid,
         });
       } else {
         resolve(user);

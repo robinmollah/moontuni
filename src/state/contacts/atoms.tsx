@@ -20,7 +20,7 @@ export const contactsAtoms = atom<IContact[]>({
     },
     {
       id: 2,
-      name: 'Susmita Moon',
+      name: 'Susmita',
       email: '',
       phone: '',
       avatar: '',

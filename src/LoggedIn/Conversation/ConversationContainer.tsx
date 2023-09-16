@@ -22,7 +22,7 @@ type IMessage = {
 const ConversationContainer = () => {
   const socket = io(BACKEND_URL);
   const user = useRecoilValue(firebaseUserSelector);
-  if (!user.name) return <AskName />;
+  if (!user.displayName) return <AskName />;
   const [messages, setMessages] = React.useState<IMessage[]>([
     { text: 'Hi', sender: '1', date: Date.now() },
     { text: 'Hello', sender: 'robinsajin@gmail.com', date: Date.now() },
