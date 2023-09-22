@@ -11,7 +11,7 @@ import UserProfile from "./UserProfile/UserProfile";
 const TabContainer = () => {
   return (
     <Box height={'100vh'}>
-      <Tabs isFitted variant="enclosed">
+      <Tabs isFitted variant="enclosed" defaultIndex={1}>
         <TabPanels padding={'0px'}>
           <TabPanel>
             <UserProfile />

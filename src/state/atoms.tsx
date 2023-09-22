@@ -23,6 +23,7 @@ export interface IConversation {
   messages: IMessage[];
   last_message: string;
   last_msg_time: Date;
+  last_msg_sender?: string;
 }
 
 export const profileAtom = atom<IUserProfile>({

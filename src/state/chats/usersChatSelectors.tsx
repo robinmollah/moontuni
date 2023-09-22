@@ -1,31 +1,39 @@
-import { selector } from 'recoil';
+import {RecoilValueReadOnly, selector} from 'recoil';
 import { DEBUG } from '../../App';
 import { IConversation } from '../atoms';
+import {firebaseDatabase} from "../../firebase-app";
+import {ref, child, get as firebaseGet} from "firebase/database";
+import {fake_chat_list} from "../../fakedata";
+import {firebaseUserSelector} from "../selectors";
+import {userProfileQuery} from "../contacts/selectors";
+import {IContact} from "../contacts/atoms";
 
-export const usersChats = selector<IConversation[]>({
+export const usersChats: RecoilValueReadOnly<IConversation[]> = selector<IConversation[]>({
   key: 'usersChats',
-  get: ({}) => {
-    if (DEBUG)
-      return [
-        {
-          participants: {
-            id: 1,
-            name: 'Moontuni',
-          },
-          messages: [],
-          last_message: 'Lebu',
-          last_msg_time: new Date(Date.now() - 60 * 10000),
-        },
-        {
-          participants: {
-            id: 1,
-            name: 'Demo user',
-          },
-          messages: [],
-          last_message: 'I am gonna fight you',
-          last_msg_time: new Date(Date.now() - 900000),
-        },
-      ];
+  get: async ({get}) => {
+    if (DEBUG){
+      return fake_chat_list;
+    } else {
+      const snapshot = await firebaseGet(child(ref(firebaseDatabase), 'conversations/' + get(firebaseUserSelector).uid));
+      if (snapshot.exists()) {
+        const conversationListSnapshot = snapshot.val();
+        const conversationList : IConversation[] = [];
+        for (const uid in conversationListSnapshot) {
+          const contact: IContact = get(userProfileQuery(uid));
+          const conversation: IConversation = {
+              participants: contact,
+              messages: conversationListSnapshot[uid].messages,
+              last_message: conversationListSnapshot[uid].last_message.message,
+              last_msg_time: conversationListSnapshot[uid].last_message.time,
+              last_msg_sender: conversationListSnapshot[uid].last_message.sender,
+          }
+          conversationList.push(conversation);
+        }
+        return conversationList;
+      } else {
+        return []
+      }
+    }
   },
 });
 

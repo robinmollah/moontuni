@@ -6,7 +6,6 @@ import {IUserProfile} from "../../state/atoms";
 
 const UserProfile = () => {
     const profile : IUserProfile =  useRecoilValue(firebaseUserSelector);
-    console.log("firebaseUserSelector", profile);
 
     return (
         <Flex alignItems={"center"} justifyContent={"center"} direction={"column"}>

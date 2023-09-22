@@ -1,9 +1,13 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, updateProfile } from 'firebase/auth';
 import config from './firebase.config.json';
+import {getDatabase} from "firebase/database"
 
 export const firebaseApp = initializeApp(config);
 export const firebaseAuth = getAuth(firebaseApp);
+export const firebaseDatabase = getDatabase(firebaseApp);
+
+// const conversationsRef = ref(firebaseDatabase, 'conversations');
 
 export const firebaseUserProfileAuth = () => {
   return new Promise((resolve) => {
