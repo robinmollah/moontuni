@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import {atom, RecoilState} from 'recoil';
 import { IContact } from './contacts/atoms';
 
 export interface IUserProfile {
@@ -7,6 +7,7 @@ export interface IUserProfile {
   email: string;
   emailVerified: boolean;
   uid: string;
+  location?: string;
 }
 
 export interface IMessage {
@@ -35,6 +36,12 @@ export const profileAtom = atom<IUserProfile>({
     emailVerified: null,
     uid: null,
   },
+});
+
+
+export const activeTabAtom : RecoilState<number> = atom<number>({
+  key: 'active_tab',
+  default: 1,
 });
 
 export const chatList = atom<IConversation>({

@@ -1,17 +1,21 @@
 import React from 'react';
-import { Box, IconButton, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import ChatList from './ChatList';
 import { BiEnvelopeOpen } from 'react-icons/bi';
 import { BsPeople } from 'react-icons/bs';
 import ContactList from './ContactList';
-import { GrAdd } from 'react-icons/gr';
 import {CgProfile} from "react-icons/cg";
 import UserProfile from "./UserProfile/UserProfile";
+import FloatingActionBar from "../comps/FloatingActionBar";
+import {useSetRecoilState} from "recoil";
+import {activeTabAtom} from "../state/atoms";
 
 const TabContainer = () => {
+  const setActiveTabIndex = useSetRecoilState(activeTabAtom);
+
   return (
     <Box height={'100vh'}>
-      <Tabs isFitted variant="enclosed" defaultIndex={1}>
+      <Tabs onChange={(index) => setActiveTabIndex(index)} isFitted variant="enclosed" defaultIndex={1}>
         <TabPanels padding={'0px'}>
           <TabPanel>
             <UserProfile />
@@ -35,17 +39,7 @@ const TabContainer = () => {
           </Tab>
         </TabList>
       </Tabs>
-      <IconButton
-        boxShadow={'teal 4px 5px 8px'}
-        borderRadius={'50%'}
-        colorScheme="teal"
-        aria-label="Add"
-        size="lg"
-        position={'absolute'}
-        bottom={'4em'}
-        right={'1em'}
-        icon={<GrAdd />}
-      />
+      <FloatingActionBar/>
     </Box>
   );
 };
