@@ -13,6 +13,7 @@ const UserProfile = () => {
             <Image
                 borderRadius={"full"}
                 boxSize={"150px"}
+                fit={"cover"}
                 src={profile.photoURL + "?alt=media"}
                 alt={"Profile picture"}
             />
